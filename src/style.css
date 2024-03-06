@@ -1,0 +1,69 @@
+@font-face {
+    font-family: Cairo;
+    src: url(/static/Cairo/Cairo-VariableFont_slnt\,wght.ttf);
+}
+
+body {
+    background-image: url(/static/images/screenshot.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    user-select: none;
+    
+    font-family: Cairo;
+}
+
+.vitals {
+    position: absolute;
+    bottom: 25px;
+    
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.anchor-left {
+    left: 40px;
+    flex-direction: row;
+}
+
+.anchor-right {
+    right: 90px;
+    flex-direction: row-reverse;
+}
+
+.vital {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    font-size: 2rem;
+
+    width: fit-content;
+    height: 40px;
+    padding: 10px;
+    border-radius: 3px;
+    
+    color: hsl(50, 75%, 52%);
+    background-color: hsl(0 0% 0% / 40%);
+}
+
+.vital > .descriptor {
+    align-self: end;
+
+    font-size: .5em;
+}
+
+.vital > .value {
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.vital > .maxValue {
+    margin-left: 1em;
+    align-self: end;
+
+    font-size: .5em;
+    font-weight: 500;
+}
