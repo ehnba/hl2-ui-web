@@ -12,6 +12,8 @@ body {
     font-family: Cairo;
 }
 
+/* Vitals */
+
 .vitals {
     position: absolute;
     bottom: 25px;
@@ -66,4 +68,62 @@ body {
 
     font-size: .5em;
     font-weight: 500;
+}
+
+/* Weapons */
+
+.weapons {
+    --category-gap: 5px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: 5px;
+
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.weapon-category {
+    --slot-base-size: 1.5vw;
+    --slot-gap: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    width: var(--slot-base-size);
+}
+
+.weapon-category:hover {
+    width: 10vw;
+}
+
+.weapon-category-number {
+    width: var(--slot-base-size);
+    height: var(--slot-base-size);
+    margin-bottom: 0;
+
+    font-size: 1rem;
+    
+    background-color: white;
+    color: black;
+}
+
+.weapon-slot {
+    width: inherit;
+    height: var(--slot-base-size);
+    margin-bottom: var(--slot-gap);
+
+    font-size: 0;
+    color: white;
+
+    background-color:hsl(0 0% 0%)
+}
+
+.weapon-category:hover > .weapon-slot {
+    height: calc(2*var(--slot-base-size) + var(--slot-gap));
+
+    font-size: 1rem;
 }
