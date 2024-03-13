@@ -96,7 +96,7 @@ body {
     width: var(--slot-base-size);
 }
 
-.weapon-category:hover {
+.weapon-category:hover, .weapon-category.active {
     width: 10vw;
 }
 
@@ -122,8 +122,12 @@ body {
     background-color:hsl(0 0% 0%)
 }
 
-.weapon-category:hover > .weapon-slot {
+.weapon-category:hover > .weapon-slot, .weapon-category.active > .weapon-slot {
     height: calc(2*var(--slot-base-size) + var(--slot-gap));
 
     font-size: 1rem;
+}
+
+.weapon-slot.selected {
+    background-color: red;
 }
