@@ -39,8 +39,6 @@ function changeOrContinueWeaponCategory(categoryIndex) {
 
             category.querySelectorAll(".weapon-slot").forEach(
                 (slot, index) => {
-                    slot.classList.remove("selected");
-
                     if (index == currentWeaponSlotNumber) {
                         slot.classList.add("selected");
                     }
