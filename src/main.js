@@ -1,30 +1,47 @@
+const weaponsRoot = document.querySelector(".weapons");
 const allWeaponCategories = document.querySelectorAll(".weapon-category");
+const allWeaponSlots = document.querySelectorAll(".weapon-slot");
 let selectedCategoryNumber = -1;
 let currentWeaponSlotNumber = 0;
 
-const allWeaponSlots = document.querySelectorAll(".weapon-slot");
+let hideWeaponsTimeoutID = null;
 
 document.addEventListener(
     "keydown",
-    event => {
-        const isNumber = isFinite(event.key);
+    e => {
+        const isNumber = isFinite(e.key);
 
-        if (isNumber && !event.repeat) {
+        if (isNumber && !e.repeat) {
+            showWeapons();
             // The key must be decremented by 1 so that the leftmost number key (the 1 key) can
             // choose the first category from the array (which starts at index 0).
-            const categoryIndex = event.key - 1;
+            const categoryIndex = e.key - 1;
             changeOrContinueWeaponCategory(categoryIndex);
         }
     }
 );
 
-function changeOrContinueWeaponCategory(categoryIndex) {
-    allWeaponCategories.forEach(category => category.classList.remove("active"));
-    allWeaponSlots.forEach(slot => slot.classList.remove("selected"));
-            
-    const category = allWeaponCategories[categoryIndex];
+document.addEventListener(
+    "mousedown",
+    e => {
+        // On left click down
+        if (e.button == 0) {
+            hideWeapons();
+        }
+    }
+);
 
+function changeOrContinueWeaponCategory(categoryIndex) {
+    if (hideWeaponsTimeoutID != null) {
+        clearTimeout(hideWeaponsTimeoutID);
+        hideWeaponsTimeoutID = null;
+    }
+    
+    const category = allWeaponCategories[categoryIndex];
+    
     if (category != null) {
+        allWeaponCategories.forEach(category => category.classList.remove("active"));
+        allWeaponSlots.forEach(slot => slot.classList.remove("selected"));
         category.classList.add("active");
 
         // Select the next weapon slot in the current category
@@ -56,4 +73,17 @@ function changeOrContinueWeaponCategory(categoryIndex) {
             }
         }
     }
+
+    if (hideWeaponsTimeoutID == null) {
+        hideWeaponsTimeoutID = setTimeout(hideWeapons, 4000);
+    }
+}
+
+function showWeapons() {
+    weaponsRoot.style.visibility = "visible";
+}
+
+function hideWeapons() {
+    weaponsRoot.style.visibility = "hidden";
+    hideWeaponsTimeoutID = null;
 }
